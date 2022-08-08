@@ -10,7 +10,7 @@ app.use(cors())
 // Routers
 app.use(userRouter)
 
-const PORT = 4000;
+const PORT = 5004;
 app.listen(PORT,()=>{
    console.log('working') 
 })

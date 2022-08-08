@@ -53,7 +53,7 @@ const createUser = async (req, res) => {
     }
 
     try {
-        const data = await Users.createUserFromDB(nnewUserInfo)
+        const data = await Users.createUserFromDB(newUserInfo)
         return res.status(200).json({
             data
         })
@@ -69,6 +69,6 @@ module.exports = {
     getAllUsers,
     createUser,
     getSingleUser,
-    updateUser,
-    deleteUser
+   // updateUser,
+   // deleteUser
 }
