@@ -6,6 +6,7 @@ const getAllUsers = async (req, res) => {
         return res.status(200).json({
             data
         })
+
     } catch (err) {
         return res.status(404).json({
             message: err.message
@@ -65,10 +66,29 @@ const createUser = async (req, res) => {
     }
 }
 
+const deleteUser = async (req, res) => {
+    const user_id = req.params.id;
+    if (!user_id) {
+        return res.status(404).json({
+            message: "NO DATA PROVIDED",
+        });
+    }
+    try {
+        const data = await Posts.deletePostFromDB(user_id);
+        return res.status(200).json({
+            data
+        })
+    } catch (err) {
+        return res.status(404).json({
+            message: err.message
+        })
+    }
+}
+
 module.exports = {
     getAllUsers,
     createUser,
     getSingleUser,
    // updateUser,
-   // deleteUser
+   deleteUser
 }

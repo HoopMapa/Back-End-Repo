@@ -12,6 +12,6 @@ app.use(userRouter)
 
 const PORT = 5004;
 app.listen(PORT,()=>{
-   console.log('working') 
+   console.log('working on PORT', PORT) 
 })
 
