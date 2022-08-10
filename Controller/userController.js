@@ -74,7 +74,7 @@ const deleteUser = async (req, res) => {
         });
     }
     try {
-        const data = await Posts.deletePostFromDB(user_id);
+        const data = await Users.deleteUserFromDB(user_id);
         return res.status(200).json({
             data
         })
