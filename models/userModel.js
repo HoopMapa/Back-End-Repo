@@ -15,10 +15,14 @@ class Users {
     
     static async createUserFromDB({ username, password, email, firstName, lastName, phonenumber}) {
         const sql = `INSERT INTO users (username, password, email, firstname, lastname, phonenumber) VALUES ($1, $2, $3, $4, $5, $6)` 
-        const dbResult = await pool.query(sql)
+        const dbResult = await pool.query(sql, [username, password, email, firstName, lastName, phonenumber])
         return dbResult.Users;
     }
-   
+
+    static async deletePostFromDB(user_id) {
+        await pool.query(`DELETE FROM posts WHERE user_id = ($1) RETURNING *`, [user_id]);
+        await pool.query(`DELETE FROM users WHERE id = ($1) RETURNING *`, [user_id]);
+    }
 
 }
 

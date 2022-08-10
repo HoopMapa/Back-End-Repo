@@ -4,23 +4,23 @@ const {
     getSingleUser,
     createUser,
     //updateUser,
-   // deleteUser
+   deleteUser
 } = require("../Controller/userController")
 
 
 // display all users
-userRouter.get('/user', getAllUsers)
+userRouter.get('/users', getAllUsers)
 
 // display a user info 
-userRouter.get('/user/:id', getSingleUser)
+userRouter.get('/users/:id', getSingleUser)
 
 // add user to database
-userRouter.post('/user', createUser)
+userRouter.post('/users', createUser)
 
 // // update user
 // userRouter.put('/user/:id/', updateUser)
 
 // // delete user
-// userRouter.delete('/user/:id', deleteUser)
+userRouter.delete('/users/:id', deleteUser)
 
 module.exports = userRouter
