@@ -9,7 +9,6 @@ exports.up = function(knex) {
         table.string('court_level')
         table.string('court_location')
         table.integer('user_id').references('id').inTable('users');
-        table.string('basketball_court')
       })
 };
 

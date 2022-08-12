@@ -2,7 +2,7 @@ const pool = require('../db')
 
 class Posts {
     static async getAllPostsFromDB() {
-        const sql = `SELECT * FROM posts`;
+        const sql = `SELECT users.username, posts.* FROM posts JOIN users ON posts.user_id = users.id`;
         const dbResult = await pool.query(sql);
         return dbResult.rows;
     }

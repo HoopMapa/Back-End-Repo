@@ -3,10 +3,9 @@
  * @returns { Promise<void> } 
  */
 exports.seed = async function(knex) {
-
-  await knex('table_name').insert([
-    {id: 1, colName: 'rowValue1'},
-    {id: 2, colName: 'rowValue2'},
-    {id: 3, colName: 'rowValue3'}
+  await knex('courts').insert([
+    {id: 1,court_name: 'Gersh Park',court_level: "Beginner",court_location: "Brooklyn,NY"},
+    {id: 2,court_name: 'Ruckers Park',court_level: "Intermediate",court_location: "NewYork,NY"},
+    {id: 3,court_name: 'Baldwin Park',court_level: "Elite",court_location: "Queens,NY"}
   ]);
 };
