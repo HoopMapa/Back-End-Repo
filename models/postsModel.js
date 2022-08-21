@@ -13,9 +13,9 @@ class Posts {
         return dbResult.rows;
     }
     
-    static async createPostFromDB({ username,post_body,basketball_court}) {
-        const sql = `INSERT INTO posts (username,post_body,basketball_court) VALUES ($1, $2, $3, $4, $5, $6) returning *` 
-        const dbResult = await pool.query(sql, [username, post_body,basketball_court])
+    static async createPostFromDB({ user_id,post_body,basketball_court}) {
+        const sql = `INSERT INTO posts (user_id,post_body,basketball_court) VALUES ($1, $2, $3) returning *` 
+        const dbResult = await pool.query(sql, [user_id, post_body,basketball_court])
         return dbResult.rows;
     }
 

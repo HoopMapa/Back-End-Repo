@@ -12,7 +12,7 @@ postRouter.get('/posts',getAllPosts )
 // display single post
 postRouter.get('/posts/:id',getSinglePost)
 // add post to DB
-postRouter.post('/post',createPost)
+postRouter.post('/posts',createPost)
 // update post 
 // postRouter.put('/posts/:id',)
 // delete post

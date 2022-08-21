@@ -30,15 +30,17 @@ const getSinglePost = async (req, res) => {
 }
 
 const createPost = async (req, res) => {
+
     const {
-        username,
+        user_id,
         post_body,
-        basketball_court
-    } = req.body
+        court
+    } = req.body.newPostInfo
+
     const newPostInfo = {
-        username,
+        user_id,
         post_body,
-        basketball_court
+        basketball_court: court
     }
     if (!newPostInfo) {
         return res.status(404).json({
