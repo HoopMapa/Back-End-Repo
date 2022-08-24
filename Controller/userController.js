@@ -65,7 +65,29 @@ const createUser = async (req, res) => {
 
     }
 }
-
+const updateUser = async(req,res) => {
+    const user_id = req.params.id;
+    const {
+        username,
+        phonenumber,
+        bio,
+    } = req.body
+    const updateUserInfo = {
+        username,phonenumber,bio,
+        user_id
+    }
+    console.log(updateUserInfo)
+    try {
+        const data = await Users.updateUserFromDB(updateUserInfo);
+        return res.status(200).json({
+            data
+        })
+    } catch (err) {
+        return res.status(404).json({
+            message: err.message
+        })
+    }
+}
 const deleteUser = async (req, res) => {
     const user_id = req.params.id;
     if (!user_id) {
@@ -89,6 +111,6 @@ module.exports = {
     getAllUsers,
     createUser,
     getSingleUser,
-   // updateUser,
+   updateUser,
    deleteUser
 }
