@@ -30,6 +30,23 @@ const getSingleUser = async (req, res) => {
     }
 }
 
+const getSingleUserFromEmail = async (req, res) => {
+    const {
+        email,
+        password
+    } = req.body;
+    console.log(email);
+    console.log(password)
+    try {
+        const data = await Users.getSingleUserFromDBEmail(email, password)
+        return res.status(200).send(data)
+    } catch (err) {
+        return res.status(404).json({
+            message: err.message
+        })
+    }
+}
+
 const createUser = async (req, res) => {
     const {
         username,
@@ -89,6 +106,7 @@ module.exports = {
     getAllUsers,
     createUser,
     getSingleUser,
+    getSingleUserFromEmail,
    // updateUser,
    deleteUser
 }

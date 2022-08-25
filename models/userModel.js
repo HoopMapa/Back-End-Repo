@@ -12,6 +12,12 @@ class Users {
         const dbResult = await pool.query(sql, [id]);
         return dbResult.rows;
     }
+
+    static async getSingleUserFromDBEmail(email, password) {
+        const sql = `SELECT * FROM users WHERE email = ($1) and password = ($2)`;
+        const dbResult = await pool.query(sql, [email, password]);
+        return dbResult.rows;
+    }
     
     static async createUserFromDB({ username, password, email, firstName, lastName, phonenumber}) {
         const sql = `INSERT INTO users (username, password, email, firstname, lastname, phonenumber) VALUES ($1, $2, $3, $4, $5, $6) returning *` 

@@ -2,6 +2,7 @@ const userRouter = require('express').Router();
 const {
     getAllUsers,
     getSingleUser,
+    getSingleUserFromEmail,
     createUser,
     //updateUser,
    deleteUser
@@ -13,6 +14,7 @@ userRouter.get('/users', getAllUsers)
 
 // display a user info 
 userRouter.get('/users/:id', getSingleUser)
+userRouter.post('/login', getSingleUserFromEmail)
 
 // add user to database
 userRouter.post('/users', createUser)
