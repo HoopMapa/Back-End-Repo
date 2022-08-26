@@ -13,6 +13,22 @@ const getAllPosts = async (req,res) => {
     }
 }
 
+const getUserPosts = async (req,res) => {
+    const {
+        user_id
+    } = req.params
+    try{
+        const data = await Posts.getUserPostsFromDB(user_id)
+        return res.status(200).json({
+            data
+        })
+    } catch (err) {
+        return res.status(404).json({
+            message: err.message
+        })
+    }
+}
+
 const getSinglePost = async (req, res) => {
     const {
         id
@@ -62,16 +78,20 @@ const createPost = async (req, res) => {
 }
 
 const deletePost = async (req, res) => {
-    const post_id = req.params.id;
-    if (!post_id) {
-        return res.status(404).json({
-            message: "NO DATA PROVIDED",
-        });
-    }
+    const {
+        id
+    } = req.params;
+    // if (id === null) {
+    //     return res.status(404).json({
+    //         message: "NO DATA PROVIDED",
+    //     });
+   // }
+
     try {
-        const data = await Posts.deletepostFromDB(post_id);
+        const data = await Posts.deletePostFromDB(id);
         return res.status(200).json({
-            data
+            data,
+            message: "SUCCESSFULLY DELETED POST"
         })
     } catch (err) {
         return res.status(404).json({
@@ -82,6 +102,7 @@ const deletePost = async (req, res) => {
 
 module.exports = {
     getAllPosts,
+    getUserPosts,
     getSinglePost,
     createPost,
     // updatePost

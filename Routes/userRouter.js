@@ -4,7 +4,7 @@ const {
     getSingleUser,
     getSingleUserFromEmail,
     createUser,
-    //updateUser,
+    updateUser,
    deleteUser
 } = require("../Controller/userController")
 
@@ -19,8 +19,8 @@ userRouter.post('/login', getSingleUserFromEmail)
 // add user to database
 userRouter.post('/users', createUser)
 
-// // update user
-// userRouter.put('/user/:id/', updateUser)
+//
+userRouter.patch('/users', updateUser)
 
 // // delete user
 userRouter.delete('/users/:id', deleteUser)

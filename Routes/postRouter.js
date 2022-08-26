@@ -1,13 +1,15 @@
 const postRouter = require('express').Router();
 const {
     getAllPosts,
+    getUserPosts,
     getSinglePost,
     createPost,
     //updateUser,
    deletePost
 } = require("../Controller/postsController")
 
-// display all post
+// display all post of a user
+postRouter.get('/posts/user/:id', getUserPosts)
 postRouter.get('/posts',getAllPosts )
 // display single post
 postRouter.get('/posts/:id',getSinglePost)

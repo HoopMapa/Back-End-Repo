@@ -7,6 +7,12 @@ class Posts {
         return dbResult.rows;
     }
 
+    static async getUserPostsFromDB(user_id) {
+        const sql = `SELECT * FROM posts WHERE user_id = ($1)`;
+        const dbResult = await pool.query(sql, [user_id]);
+        return dbResult.rows;
+    }
+
     static async getSinglePostFromDB(id) {
         const sql = `SELECT * FROM posts WHERE id = ($1)`;
         const dbResult = await pool.query(sql, [id]);
@@ -19,8 +25,10 @@ class Posts {
         return dbResult.rows;
     }
 
-    static async deletePostFromDB(post_id) {
-        await pool.query(`DELETE FROM posts WHERE post_id = ($1) RETURNING *`, [post_id]);
+    static async deletePostFromDB(id) {
+        const sql = `DELETE FROM posts WHERE id = ($1)`
+        const dbResult = await pool.query(sql, [id]);
+        return dbResult.rows;
     }
 }
 

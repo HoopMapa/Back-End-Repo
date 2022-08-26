@@ -83,6 +83,49 @@ const createUser = async (req, res) => {
     }
 }
 
+
+const updateUser = async (req, res) => {
+    const {
+        id,
+        username,
+        password,
+        email,
+        firstname,
+        lastname,
+        phonenumber,
+        bio
+    } = req.body
+    const updateUserInfo = {
+        id,
+        username,
+        password,
+        email,
+        firstname,
+        lastname,
+        phonenumber,
+        bio
+    }
+    if (!updateUserInfo) {
+        return res.status(404).json({
+            message: 'NO DATA IS BEING PROVIDED'
+        })
+    }
+
+    try {
+        const data = await Users.updateUserFromDB(updateUserInfo)
+        return res.status(200).json({
+            data
+        })
+    } catch (err) {
+        return res.status(404).json({
+            message: err.message
+        })
+
+    }
+}
+
+
+
 const deleteUser = async (req, res) => {
     const user_id = req.params.id;
     if (!user_id) {
@@ -107,6 +150,6 @@ module.exports = {
     createUser,
     getSingleUser,
     getSingleUserFromEmail,
-   // updateUser,
+   updateUser,
    deleteUser
 }

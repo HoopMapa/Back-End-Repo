@@ -30,6 +30,21 @@ class Users {
         await pool.query(`DELETE FROM users WHERE id = ($1) RETURNING *`, [user_id]);
     }
 
+    static async updateUserFromDB({id, username, password, email, firstname, lastname, phonenumber, bio}) {
+        const sql = `UPDATE users
+        SET username = ($2),
+        password = ($3),
+        email = ($4),
+        firstname = ($5),
+        lastname = ($6),
+        phonenumber = ($7),
+        bio = ($8)
+        WHERE id = ($1)
+        `
+        const dbResult = await pool.query(sql, [id, username, password, email, firstname, lastname, phonenumber, bio])
+        return dbResult.rows;
+    }
+
 }
 
 module.exports = Users
