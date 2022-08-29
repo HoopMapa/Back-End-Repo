@@ -60,6 +60,24 @@ const createPost = async (req, res) => {
 
     }
 }
+const updatePosts = async(req,res) => {
+    const post_id = req.params.id;
+    const { post_body } = req.body
+    console.log(post_body,post_id)
+    try {
+        const data = await Posts.updatePostFromDB(post_id, post_body)
+        return res.status(200).json({
+            data
+        })
+    } catch (err) {
+        return res.status(404).json({
+            message: err.message
+        })
+
+    }
+
+    
+}
 
 const deletePost = async (req, res) => {
     const post_id = req.params.id;
@@ -84,6 +102,6 @@ module.exports = {
     getAllPosts,
     getSinglePost,
     createPost,
-    // updatePost
+    updatePosts,
     deletePost
 }

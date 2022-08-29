@@ -3,7 +3,7 @@ const {
     getAllPosts,
     getSinglePost,
     createPost,
-    //updateUser,
+    updatePosts,
    deletePost
 } = require("../Controller/postsController")
 
@@ -14,7 +14,7 @@ postRouter.get('/posts/:id',getSinglePost)
 // add post to DB
 postRouter.post('/posts',createPost)
 // update post 
-// postRouter.put('/posts/:id',)
+postRouter.put('/posts/:id',updatePosts)
 // delete post
 postRouter.delete('/posts/:id',deletePost)
 
