@@ -56,7 +56,7 @@ const createUser = async (req, res) => {
     try {
         const data = await Users.createUserFromDB(newUserInfo)
         return res.status(200).json({
-            data
+            message: `user ${user_id} deleted`
         })
     } catch (err) {
         return res.status(404).json({

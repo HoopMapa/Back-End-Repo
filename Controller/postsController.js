@@ -34,13 +34,13 @@ const createPost = async (req, res) => {
     const {
         user_id,
         post_body,
-        court
-    } = req.body.newPostInfo
+        court_id
+    } = req.body
 
     const newPostInfo = {
         user_id,
         post_body,
-        basketball_court: court
+        basketball_court: court_id
     }
     if (!newPostInfo) {
         return res.status(404).json({
@@ -87,9 +87,9 @@ const deletePost = async (req, res) => {
         });
     }
     try {
-        const data = await Posts.deletepostFromDB(post_id);
+        const data = await Posts.deletePostFromDB(post_id);
         return res.status(200).json({
-            data
+            message: `post ${post_id} deleted`
         })
     } catch (err) {
         return res.status(404).json({

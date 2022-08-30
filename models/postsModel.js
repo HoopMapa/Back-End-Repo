@@ -25,7 +25,7 @@ class Posts {
     }
 
     static async deletePostFromDB(post_id) {
-        await pool.query(`DELETE FROM posts WHERE post_id = ($1) RETURNING *`, [post_id]);
+        await pool.query(`DELETE FROM posts WHERE id = ($1) RETURNING *`, [post_id]);
     }
 }
 

@@ -24,8 +24,8 @@ class Courts {
         return dbResult.rows;
     }
 
-    static async deleteCourtFromDB(post_id) {
-        await pool.query(`DELETE FROM courts WHERE court_id = ($1) RETURNING *`, [court_id]);
+    static async deleteCourtFromDB(court_id) {
+        await pool.query(`DELETE FROM courts WHERE id = ($1) RETURNING *`, [court_id]);
     }
 }
 

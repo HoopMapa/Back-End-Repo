@@ -8,6 +8,8 @@ exports.up = function(knex) {
         table.string('court_name')
         table.string('court_level')
         table.string('court_location')
+        table.string("longitude")
+        table.string("latitude")
         table.integer('user_id').references('id').inTable('users');
       })
 };

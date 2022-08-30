@@ -88,7 +88,7 @@ const deleteCourt = async (req, res) => {
     try {
         const data = await Courts.deleteCourtFromDB(court_id);
         return res.status(200).json({
-            data
+            message: `court ${court_id} deleted`
         })
     } catch (err) {
         return res.status(404).json({
